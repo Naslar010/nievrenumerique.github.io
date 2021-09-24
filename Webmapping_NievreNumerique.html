@@ -317,10 +317,13 @@ font-family: 'Tahoma';
 			'id': 'département',
 			'type': 'line',
 			'source': 'dept',
-			'layout': {},
+			'layout': {
+				'line-join': 'round',
+				'line-cap': 'round'
+			},
 			'paint': {
 				'line-color': '#900C3F',
-				'line-width': 4
+				'line-width': 2.5
 			}
 		});
 	});
