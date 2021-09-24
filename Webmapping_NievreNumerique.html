@@ -305,7 +305,25 @@ font-family: 'Tahoma';
 		map.getCanvas().style.cursor = '';
 	});
 	
-	
+	map.on('load', () => {
+	// Add a source for the departement 58 polygons.
+		map.addSource('dept', {
+			'type': 'geojson',
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/dept58.geojson'
+		});
+	 
+		// Add a color outline around the polygon.
+		map.addLayer({
+			'id': 'département',
+			'type': 'line',
+			'source': 'dept',
+			'layout': {},
+			'paint': {
+				'line-color': '#900C3F',
+				'line-width': 4
+			}
+		});
+	});
 	map.on('load', () => {
 	// Add a source for the state polygons.
 		map.addSource('states', {
