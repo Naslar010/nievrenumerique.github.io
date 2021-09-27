@@ -176,7 +176,8 @@ font-family: 'Tahoma';
 	// Add the control to the map.
 	var geocoder = new MapboxGeocoder({
 		accessToken: mapboxgl.accessToken,
-		mapboxgl: mapboxgl
+		mapboxgl: mapboxgl,
+		placeholder: 'Entrer votre adresse ou commune' // Placeholder text for the search bar
 	});
  
 	document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
