@@ -255,14 +255,18 @@ font-family: 'Tahoma';
 				if (error) throw error;
 				map.addImage('ftth-sfr', image);
 		});
-		// Add a GeoJSON source with 2 points
-		map.addSource('ipe_amel', {
+		// Add a GeoJSON source ipe_amel 1
+		map.addSource('ipe_amel1', {
 			'type': 'geojson',
 			'data': 'https://raw.githubusercontent.com/Naslar010/webmapping/main/ipe_amel.geojson'
-
+			
+		// Add a GeoJSON source ipe_amel 1
+		map.addSource('ipe_amel2', {
+			'type': 'geojson',
+			'data': 'https://raw.githubusercontent.com/Naslar010/webmapping/main/ipe_amel.geojson
 		});
 		map.addLayer({
-			"id": 'Prises SFR-XpFibre',
+			"id": 'Prises amel1',
 			"type": 'symbol',
 			"source": 'ipe_amel',
 			"layout": {
@@ -275,10 +279,26 @@ font-family: 'Tahoma';
 					[22, [0, -40]]
 				]}
 			},
-		});		
+		});
+		
+		map.addLayer({
+			"id": 'Prises amel2',
+			"type": 'symbol',
+			"source": 'ipe_amel',
+			"layout": {
+				"visibility": 'none',
+				"icon-image":'ftth-sfr',
+				"icon-allow-overlap": true,
+				"icon-size": 0.20,
+				"icon-offset":{ stops: [
+					[13, [0, -30]],
+					[22, [0, -40]]
+				]}
+			},
+		});
 	});
 	
-	map.on('click', 'Prises SFR-XpFibre', (e) => {
+	map.on('click', 'Prises amel1', (e) => {
 		// Copy coordinates array.
 		var coordinates = e.features[0].geometry.coordinates.slice();
 		var feature = e.features[0];
@@ -288,21 +308,47 @@ font-family: 'Tahoma';
 		// over the copy being pointed to.
 		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-		}
-		 
+		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
 			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifiantimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
 			.addTo(map);
 	});
 	
-	map.on('mouseenter', 'Prises SFR-XpFibre', () => {
+	map.on('mouseenter', 'Prises amel1', () => {
 		map.getCanvas().style.cursor = 'pointer';
 	});
 	 
 	// Change the cursor back to a pointer
 	// when it leaves the states layer.
-	map.on('mouseleave', 'Prises SFR-XpFibre', () => {
+	map.on('mouseleave', 'Prises amel1', () => {
+		map.getCanvas().style.cursor = '';
+	});
+	
+	map.on('click', 'Prises amel2', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}		 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifiantimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'Prises amel2', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change the cursor back to a pointer
+	// when it leaves the states layer.
+	map.on('mouseleave', 'Prises amel2', () => {
 		map.getCanvas().style.cursor = '';
 	});
 	
@@ -329,17 +375,17 @@ font-family: 'Tahoma';
 		});
 	});
 	map.on('load', () => {
-	// Add a source for the state polygons.
-		map.addSource('states', {
+	// Add a source for the zasro nn polygons.
+		map.addSource('data_sro', {
 			'type': 'geojson',
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/zasro_nn.geojson'
 		});
 	 
 	// Add a layer showing the state polygons.
 		map.addLayer({
-			'id': 'Déploiement Nièvre Numérique',
+			'id': 'Déploiement NN',
 			'type': 'fill',
-			'source': 'states',
+			'source': 'data_sro',
 			'layout': {"visibility": 'none',
 			},
 			'paint': {
@@ -361,7 +407,7 @@ font-family: 'Tahoma';
 		closeButton: false,
 		closeOnClick: false
 	});
-	map.on('mouseenter', 'Déploiement Nièvre Numérique', (e) => {
+	map.on('mouseenter', 'Déploiement NN', (e) => {
 		// Change the cursor style as a UI indicator.
 		map.getCanvas().style.cursor = 'pointer';
 		 
@@ -374,7 +420,7 @@ font-family: 'Tahoma';
 			.addTo(map);
 	});
 	 
-	map.on('mouseleave', 'Déploiement Nièvre Numérique', () => {
+	map.on('mouseleave', 'Déploiement NN', () => {
 		map.getCanvas().style.cursor = '';
 		popupZasro.remove();
 	});
@@ -388,7 +434,7 @@ font-family: 'Tahoma';
 	 
 	// Add a layer showing the state polygons.
 		map.addLayer({
-			'id': 'Déploiement SFR-XpFibre',
+			'id': 'Déploiement SFR',
 			'type': 'fill',
 			'source': 'SFR-XpFibre',
 			'layout': {"visibility": 'none',
@@ -400,29 +446,36 @@ font-family: 'Tahoma';
 		});
 	});
 	
-	var toggleableLayerIds = ['Prises Nièvre Numérique', 'Prises SFR-XpFibre', 'Déploiement Nièvre Numérique', 'Déploiement SFR-XpFibre'];
-	for (var i = 0; i < toggleableLayerIds.length; i++) {
-		var id = toggleableLayerIds[i];
-		
+	//whatever layers you want to toggle go in to this function
+	toggleLayer(['Prises nn1', 'Prises nn2', 'Prises nn3', 'Prises nn4', 'Prises nn5',], 'Prises Nièvre Numérique');
+	toggleLayer(['Prises amel1', 'Prises amel2'], 'Prises SFR-XpFibre');
+	toggleLayer(['Déploiement NN'], 'Déploiement Nièvre Numérique');
+	toggleLayer(['Déploiement SFR'], 'Déploiement SFR-XpFibre');
+
+	function toggleLayer(ids, name) {
 		var link = document.createElement('a');
 		link.href = '#';
 		link.className = 'inactive';
-		link.textContent = id;
-		
+		link.textContent = name;
+
 		link.onclick = function (e) {
-			var clickedLayer = this.textContent;
 			e.preventDefault();
 			e.stopPropagation();
-			var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-			if (visibility === 'visible') {
-				map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-				this.className = '';
-			} else {
-				this.className = 'active';
-				map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-			} 
+			for (layers in ids){
+				var visibility = map.getLayoutProperty(ids[layers], 'visibility');
+				if (visibility === 'visible') {
+					map.setLayoutProperty(ids[layers], 'visibility', 'none');
+					this.className = '';
+				} else {
+					this.className = 'active';
+					map.setLayoutProperty(ids[layers], 'visibility', 'visible');
+				}
+			}
+
 		};
-		var layers = document.getElementById('menu'); layers.appendChild(link); 
+
+		var layers = document.getElementById('menu');
+		layers.appendChild(link);
 	}
 
 //////////////////////////////////   Ajout de l'habillage de la carte //////////////////////////////////////
