@@ -190,7 +190,7 @@ font-family: 'Tahoma';
 				if (error) throw error;
 				map.addImage('ftth-marker', image);
 		});
-		// Add a GeoJSON source with ipe nn1, nn2, nn3, nn4, nn5
+		// Add a GeoJSON source with ipe nn
 		map.addSource('ipe_nn1', {
 			'type': 'geojson',
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn1.geojson'
@@ -327,7 +327,7 @@ font-family: 'Tahoma';
 		map.addLayer({
 			"id": 'Prises amel1',
 			"type": 'symbol',
-			"source": 'ipe_amel',
+			"source": 'ipe_amel1',
 			"layout": {
 				"visibility": 'none',
 				"icon-image":'ftth-sfr',
@@ -343,7 +343,7 @@ font-family: 'Tahoma';
 		map.addLayer({
 			"id": 'Prises amel2',
 			"type": 'symbol',
-			"source": 'ipe_amel',
+			"source": 'ipe_amel2',
 			"layout": {
 				"visibility": 'none',
 				"icon-image":'ftth-sfr',
@@ -440,7 +440,7 @@ font-family: 'Tahoma';
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/zasro_nn.geojson'
 		});
 	 
-	// Add a layer showing the state polygons.
+	// Add a layer showing the zasro nn polygons.
 		map.addLayer({
 			'id': 'Déploiement NN',
 			'type': 'fill',
