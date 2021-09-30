@@ -190,21 +190,52 @@ font-family: 'Tahoma';
 				if (error) throw error;
 				map.addImage('ftth-marker', image);
 		});
-		// Add a GeoJSON source with 2 points
-		map.addSource('ipe', {
+		// Add a GeoJSON source with ipe nn1, nn2, nn3, nn4, nn5
+		map.addSource('ipe_nn1', {
 			'type': 'geojson',
-			'data': 'https://raw.githubusercontent.com/Naslar010/webmapping/main/ipe_nn1.geojson'
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn1.geojson'
 		});
 		
 		map.addSource('ip_nn2', {
 			'type': 'geojson',
-			'data': 'https://raw.githubusercontent.com/Naslar010/webmapping/main/ipe_nn2.geojson'
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn2.geojson'
+		});
+		
+		map.addSource('ip_nn3', {
+			'type': 'geojson',
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn3.geojson'
+		});
+		
+		map.addSource('ip_nn4', {
+			'type': 'geojson',
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn4.geojson'
+		});
+		
+		map.addSource('ip_nn5', {
+			'type': 'geojson',
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn5.geojson'
 		});
 		
 		map.addLayer({
-			"id": 'Prises Nièvre Numérique',
+			"id": 'Prises nn1',
 			"type": 'symbol',
-			"source": 'ipe',
+			"source": 'ipe_nn1',
+			"layout": {
+				"visibility": 'none',
+				"icon-image":'ftth-marker',
+				"icon-allow-overlap": true,
+				"icon-size": 0.40,
+				"icon-offset":{ stops: [
+					[13, [0, -30]],
+					[22, [0, -40]]
+				]}
+			},
+		});
+
+		map.addLayer({
+			"id": 'Prises nn2',
+			"type": 'symbol',
+			"source": 'ipe_nn2',
 			"layout": {
 				"visibility": 'none',
 				"icon-image":'ftth-marker',
@@ -218,7 +249,7 @@ font-family: 'Tahoma';
 		});		
 	});
 	
-	map.on('click', 'Prises Nièvre Numérique', (e) => {
+	map.on('click', 'Prises nn1', (e) => {
 		// Copy coordinates array.
 		var coordinates = e.features[0].geometry.coordinates.slice();
 		var feature = e.features[0];
@@ -236,13 +267,41 @@ font-family: 'Tahoma';
 			.addTo(map);
 	});
 	
-	map.on('mouseenter', 'Prises Nièvre Numérique', () => {
+	map.on('mouseenter', 'Prises nn1', () => {
 		map.getCanvas().style.cursor = 'pointer';
 	});
 	 
 	// Change the cursor back to a pointer
 	// when it leaves the states layer.
-	map.on('mouseleave', 'Prises Nièvre Numérique', () => {
+	map.on('mouseleave', 'Prises nn1', () => {
+		map.getCanvas().style.cursor = '';
+	});
+	
+	map.on('click', 'Prises nn2', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}
+		 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.IdentifiantImmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.NombreLogementsAdresseIPE+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.EtatImmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.NumeroVoieImmeuble+' '+feature.properties.TypeVoieImmeuble+' '+feature.properties.NomVoieImmeuble+', '+feature.properties.CodePostalImmeuble+' '+feature.properties.CommuneImmeuble+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'Prises nn2', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change the cursor back to a pointer
+	// when it leaves the states layer.
+	map.on('mouseleave', 'Prises nn2', () => {
 		map.getCanvas().style.cursor = '';
 	});
 	
@@ -258,12 +317,12 @@ font-family: 'Tahoma';
 		// Add a GeoJSON source ipe_amel 1
 		map.addSource('ipe_amel1', {
 			'type': 'geojson',
-			'data': 'https://raw.githubusercontent.com/Naslar010/webmapping/main/ipe_amel.geojson'
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_amel1.geojson'
 			
 		// Add a GeoJSON source ipe_amel 1
 		map.addSource('ipe_amel2', {
 			'type': 'geojson',
-			'data': 'https://raw.githubusercontent.com/Naslar010/webmapping/main/ipe_amel.geojson
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_amel2.geojson'
 		});
 		map.addLayer({
 			"id": 'Prises amel1',
@@ -429,7 +488,7 @@ font-family: 'Tahoma';
 	// Add a source for the state polygons.
 		map.addSource('SFR-XpFibre', {
 			'type': 'geojson',
-			'data': 'https://raw.githubusercontent.com/Naslar010/webmapping/main/zasro_amel.geojson'
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/zasro_amel.geojson'
 		});
 	 
 	// Add a layer showing the state polygons.
