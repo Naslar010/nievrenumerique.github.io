@@ -134,6 +134,7 @@ font-family: 'Tahoma';
 
 <div id="menu"></div>
 
+// barre style navigation
 <div id="navstyle">
 <input id="streets-v11" type="radio" name="rtoggle" value="streets" checked="checked">
 <label for="streets-v11">Vue carto 2D</label>
@@ -141,6 +142,7 @@ font-family: 'Tahoma';
 <label for="satellite-v9">Vue satellite</label>
 </div>
 
+// Bloc légende
 <div id="zasro-legend" class="legend">
 <h4>Zone Arrière de Sous-répartiteur Optique</h4>
 <div><span style="background-color: #34e43f"></span>Reprise en exploitation</div>
@@ -173,7 +175,7 @@ font-family: 'Tahoma';
 		};
 	}
 	
-	// Add the control to the map.
+	// Ajout du geocoder.
 	var geocoder = new MapboxGeocoder({
 		accessToken: mapboxgl.accessToken,
 		mapboxgl: mapboxgl,
@@ -182,6 +184,7 @@ font-family: 'Tahoma';
  
 	document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 	
+	// Gestion des couches et de l'affichage
 	map.on('load', () => {
 		// Add an image to use as a custom marker
 		map.loadImage(
@@ -190,7 +193,7 @@ font-family: 'Tahoma';
 				if (error) throw error;
 				map.addImage('ftth-marker', image);
 		});
-		// Add a GeoJSON source with ipe nn
+		// Référence des souces pour les prises nn
 		map.addSource('ipe_nn1', {
 			'type': 'geojson',
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn1.geojson'
@@ -216,19 +219,20 @@ font-family: 'Tahoma';
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_nn5.geojson'
 		});
 		
+		// Ajout des couches par fraction
 		map.addLayer({
 			"id": 'Prises nn1',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_nn1',
 			"layout": {
 				"visibility": 'none',
-				"icon-image":'ftth-marker',
-				"icon-allow-overlap": true,
-				"icon-size": 0.40,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
+				'circle-color': {
+				    property: 'EtatImmeuble',
+				    type: 'categorical',
+				    stops: [
+					['DEPLOYE', '#3af4f4'],
+					['CIBLE', '#dd2c8a'],
+				]},
 			},
 		});
 
