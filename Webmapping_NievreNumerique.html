@@ -246,7 +246,55 @@ font-family: 'Tahoma';
 					[22, [0, -40]]
 				]}
 			},
-		});		
+		});
+		
+		map.addLayer({
+			"id": 'Prises nn3',
+			"type": 'symbol',
+			"source": 'ipe_nn3',
+			"layout": {
+				"visibility": 'none',
+				"icon-image":'ftth-marker',
+				"icon-allow-overlap": true,
+				"icon-size": 0.40,
+				"icon-offset":{ stops: [
+					[13, [0, -30]],
+					[22, [0, -40]]
+				]}
+			},
+		});
+		
+		map.addLayer({
+			"id": 'Prises nn4',
+			"type": 'symbol',
+			"source": 'ipe_nn4',
+			"layout": {
+				"visibility": 'none',
+				"icon-image":'ftth-marker',
+				"icon-allow-overlap": true,
+				"icon-size": 0.40,
+				"icon-offset":{ stops: [
+					[13, [0, -30]],
+					[22, [0, -40]]
+				]}
+			},
+		});
+		
+		map.addLayer({
+			"id": 'Prises nn5',
+			"type": 'symbol',
+			"source": 'ipe_nn5',
+			"layout": {
+				"visibility": 'none',
+				"icon-image":'ftth-marker',
+				"icon-allow-overlap": true,
+				"icon-size": 0.40,
+				"icon-offset":{ stops: [
+					[13, [0, -30]],
+					[22, [0, -40]]
+				]}
+			},
+		});
 	});
 	
 	map.on('click', 'Prises nn1', (e) => {
@@ -305,6 +353,89 @@ font-family: 'Tahoma';
 		map.getCanvas().style.cursor = '';
 	});
 	
+	map.on('click', 'Prises nn3', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}
+		 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.IdentifiantImmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.NombreLogementsAdresseIPE+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.EtatImmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.NumeroVoieImmeuble+' '+feature.properties.TypeVoieImmeuble+' '+feature.properties.NomVoieImmeuble+', '+feature.properties.CodePostalImmeuble+' '+feature.properties.CommuneImmeuble+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'Prises nn3', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change the cursor back to a pointer
+	// when it leaves the states layer.
+	map.on('mouseleave', 'Prises nn3', () => {
+		map.getCanvas().style.cursor = '';
+	});
+	
+	map.on('click', 'Prises nn4', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}
+		 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.IdentifiantImmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.NombreLogementsAdresseIPE+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.EtatImmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.NumeroVoieImmeuble+' '+feature.properties.TypeVoieImmeuble+' '+feature.properties.NomVoieImmeuble+', '+feature.properties.CodePostalImmeuble+' '+feature.properties.CommuneImmeuble+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'Prises nn4', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change the cursor back to a pointer
+	// when it leaves the states layer.
+	map.on('mouseleave', 'Prises nn4', () => {
+		map.getCanvas().style.cursor = '';
+	});
+	
+	map.on('click', 'Prises nn5', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}
+		 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.IdentifiantImmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.NombreLogementsAdresseIPE+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.EtatImmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.NumeroVoieImmeuble+' '+feature.properties.TypeVoieImmeuble+' '+feature.properties.NomVoieImmeuble+', '+feature.properties.CodePostalImmeuble+' '+feature.properties.CommuneImmeuble+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'Prises nn5', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change the cursor back to a pointer
+	// when it leaves the states layer.
+	map.on('mouseleave', 'Prises nn5', () => {
+		map.getCanvas().style.cursor = '';
+	});
 	
 	map.on('load', () => {
 		// Add an image to use as a custom marker
