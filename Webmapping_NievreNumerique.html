@@ -226,13 +226,21 @@ font-family: 'Tahoma';
 			"source": 'ipe_nn1',
 			"layout": {
 				"visibility": 'none',
-				'circle-color': {
-				    property: 'EtatImmeuble',
-				    type: 'categorical',
-				    stops: [
-					['DEPLOYE', '#3af4f4'],
-					['CIBLE', '#dd2c8a'],
-				]},
+				'circle-radius': {
+					'base': 1.75,
+					'stops': [
+						[12, 2],
+						[22, 180]
+					]
+				},
+				'circle-color': [
+					'match',
+					['get', 'EtatImmeuble'],
+					'CIBLE',
+					'#e55e5e',
+					'DEPLOYE',
+					'#3bb2d0',
+				]
 			},
 		});
 
