@@ -222,82 +222,97 @@ font-family: 'Tahoma';
 		// Ajout des couches par fraction
 		map.addLayer({
 			"id": 'Prises nn1',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_nn1',
-			"layout": {
-				"visibility": 'none',
-				"icon-image":'ftth-marker',
-				"icon-allow-overlap": true,
-				"icon-size": 0.40,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
-			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'EtatImmeuble',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
 		});
 
 		map.addLayer({
 			"id": 'Prises nn2',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_nn2',
-			"layout": {
-				"visibility": 'none',
-				"icon-image":'ftth-marker',
-				"icon-allow-overlap": true,
-				"icon-size": 0.40,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
-			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'EtatImmeuble',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
 		});
 		
 		map.addLayer({
 			"id": 'Prises nn3',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_nn3',
-			"layout": {
-				"visibility": 'none',
-				"icon-image":'ftth-marker',
-				"icon-allow-overlap": true,
-				"icon-size": 0.40,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
-			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'EtatImmeuble',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
 		});
 		
 		map.addLayer({
 			"id": 'Prises nn4',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_nn4',
-			"layout": {
-				"visibility": 'none',
-				"icon-image":'ftth-marker',
-				"icon-allow-overlap": true,
-				"icon-size": 0.40,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
-			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'EtatImmeuble',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
 		});
 		
 		map.addLayer({
 			"id": 'Prises nn5',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_nn5',
-			"layout": {
-				"visibility": 'none',
-				"icon-image":'ftth-marker',
-				"icon-allow-overlap": true,
-				"icon-size": 0.40,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
-			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'EtatImmeuble',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
 		});
 	});
 	
@@ -461,34 +476,40 @@ font-family: 'Tahoma';
 		});
 		map.addLayer({
 			"id": 'Prises amel1',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_amel1',
-			"layout": {
-				"visibility": 'none',
-				"icon-image":'ftth-sfr',
-				"icon-allow-overlap": true,
-				"icon-size": 0.20,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
-			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'etatimmeuble',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
 		});
 		
 		map.addLayer({
 			"id": 'Prises amel2',
-			"type": 'symbol',
+			"type": 'circle',
 			"source": 'ipe_amel2',
-			"layout": {
-				"visibility": 'none',
-				"icon-image":'ftth-sfr',
-				"icon-allow-overlap": true,
-				"icon-size": 0.20,
-				"icon-offset":{ stops: [
-					[13, [0, -30]],
-					[22, [0, -40]]
-				]}
-			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'etatimmeuble',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
 		});
 	});
 	
