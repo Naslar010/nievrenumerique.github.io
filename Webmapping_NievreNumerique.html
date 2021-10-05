@@ -222,15 +222,18 @@ font-family: 'Tahoma';
 		// Ajout des couches par fraction
 		map.addLayer({
 			"id": 'Prises nn1',
-			"type": 'circle',
+			"type": 'symbol',
 			"source": 'ipe_nn1',
-			"visibility": 'none',
-			"paint": {
-				'circle-color': '#4264fb',
-				'circle-radius': 8,
-				'circle-stroke-width': 2,
-				'circle-stroke-color': '#ffffff'
-			}
+			"layout": {
+				"visibility": 'none',
+				"icon-image":'ftth-marker',
+				"icon-allow-overlap": true,
+				"icon-size": 0.40,
+				"icon-offset":{ stops: [
+					[13, [0, -30]],
+					[22, [0, -40]]
+				]}
+			},
 		});
 
 		map.addLayer({
