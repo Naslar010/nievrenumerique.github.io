@@ -616,7 +616,7 @@ font-family: 'Tahoma';
 			'id': 'communes',
 			'type': 'fill',
 			'source': 'comm',
-			'layout': {
+			'layout': {'visibility': 'none',
 			},
 			'paint': {
 				'fill-color': '#a5b6b7',
@@ -629,7 +629,7 @@ font-family: 'Tahoma';
 			'id': 'commune_line',
 			'type': 'line',
 			'source': 'comm',
-			'layout': {
+			'layout': {'visibility': 'none',
 				'line-join': 'round',
 				'line-cap': 'round'
 			},
@@ -643,7 +643,7 @@ font-family: 'Tahoma';
 	map.on('click', 'communes', (e) => {	 
 		new mapboxgl.Popup()
 			.setLngLat(e.lngLat)
-			.setHTML(('<p><b><u> Nom Commune</b></u> : '+e.features[0].properties.nom+'<br><b><u>Code Postal</b></u> : '+e.features[0].properties.id+'<br><b><u>Nombre de prises IPE</b></u> : ' +e.features[0].properties.nb_prises+'</p>'))
+			.setHTML(('<p><b><u> Nom Commune</b></u> : '+e.features[0].properties.nom+'<br><b><u>Code INSEE</b></u> : '+e.features[0].properties.id+'<br><b><u>Nombre de prises IPE</b></u> : ' +e.features[0].properties.nb_prises+'</p>'))
 			.addTo(map);
 	});
 	
@@ -783,6 +783,7 @@ font-family: 'Tahoma';
 	toggleLayer(['Prises amel1', 'Prises amel2'], 'Prises SFR-XpFibre');
 	toggleLayer(['Déploiement NN', 'Déploiement NN Borders'], 'Déploiement Nièvre Numérique');
 	toggleLayer(['Déploiement SFR'], 'Déploiement SFR-XpFibre');
+	oggleLayer(['communes'], '+/- Communes');
 
 	function toggleLayer(ids, name) {
 		var link = document.createElement('a');
