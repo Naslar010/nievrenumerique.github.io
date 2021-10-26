@@ -627,6 +627,31 @@ font-family: 'Tahoma';
 		});
 	});
 	
+	map.on('click', 'communes', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}	 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> Nom Commune</b></u> : '+feature.properties.nom+'<br><b><u>Code Postal</b></u> : '+feature.properties.id+'<br><b><u>Nombre de prises IPE</b></u> : ' +feature.properties.nb_prises+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'communes', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// when it leaves the states layer.
+	map.on('mouseleave', 'communes', () => {
+		map.getCanvas().style.cursor = '';
+	});
+
+	
 	let hoveredStateId = null;
 	
 	map.on('load', () => {
