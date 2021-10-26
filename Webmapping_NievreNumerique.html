@@ -616,7 +616,7 @@ font-family: 'Tahoma';
 			'id': 'communes',
 			'type': 'fill',
 			'source': 'comm',
-			'layout': {'visibility': 'none',
+			'layout': {"visibility": 'none',
 			},
 			'paint': {
 				'fill-color': '#a5b6b7',
@@ -629,7 +629,8 @@ font-family: 'Tahoma';
 			'id': 'commune_line',
 			'type': 'line',
 			'source': 'comm',
-			'layout': {'visibility': 'none',
+			'layout': {
+				"visibility": 'none',
 				'line-join': 'round',
 				'line-cap': 'round'
 			},
@@ -783,7 +784,7 @@ font-family: 'Tahoma';
 	toggleLayer(['Prises amel1', 'Prises amel2'], 'Prises SFR-XpFibre');
 	toggleLayer(['Déploiement NN', 'Déploiement NN Borders'], 'Déploiement Nièvre Numérique');
 	toggleLayer(['Déploiement SFR'], 'Déploiement SFR-XpFibre');
-	toggleLayer(['communes'], '+/- Communes');
+	toggleLayer(['communes', 'commune_line'], '+/- Communes');
 
 	function toggleLayer(ids, name) {
 		var link = document.createElement('a');
