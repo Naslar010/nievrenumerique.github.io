@@ -610,10 +610,23 @@ font-family: 'Tahoma';
 			'type': 'geojson',
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/communes.geojson'
 		});
-	 
+		
 		// Add a color outline around the polygon.
 		map.addLayer({
 			'id': 'communes',
+			'type': 'fill',
+			'source': 'comm',
+			'layout': {
+			},
+			'paint': {
+				'fill-color': '#a5b6b7',
+				'fill-opacity': 0
+			}
+		});
+	 
+		// Add a color outline around the polygon.
+		map.addLayer({
+			'id': 'commune_line',
 			'type': 'line',
 			'source': 'comm',
 			'layout': {
