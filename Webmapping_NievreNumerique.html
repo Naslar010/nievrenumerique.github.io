@@ -716,48 +716,44 @@ font-family: 'Tahoma';
 				'line-opacity': 0.4
 			}
 		});
+	});
 	
 		
-		map.on('click', 'Déploiement NN', (e) => {
-			new mapboxgl.Popup()
-				.setLngLat(e.lngLat)
-				.setHTML(('<p><b><u>Nom de la Zasro</b></u> : '+feature.properties.SRO_1+'<br><b><u>Nombre de prises réel</b></u>  : '+feature.properties.PRISE_RBAL+'<br><b><u>Statut avancement</b></u>  : '+feature.properties.STATUT+'<br><b><u>Début travaux</b></u>  : '+feature.properties.DEB_TRAV+'<br><b><u>Fin travaux</b></u>  : '+feature.properties.FIN_TRAV+'<br><b><u>Taux avancement travaux</b></u>  : '+feature.properties.AVANCEMENT+'<br><b><u>Taux complétude zone</b></u>  : '+feature.properties.COMPLETUDE+'<br><b><u>Infos pratiques</b></u>  : '+feature.properties.COMMENTAIR+'</p>'))
-				.addTo(map);
-		});
+	map.on('click', 'Déploiement NN', (e) => {
+		new mapboxgl.Popup()
+			.setLngLat(e.lngLat)
+			.setHTML(('<p><b><u>Nom de la Zasro</b></u> : '+feature.properties.SRO_1+'<br><b><u>Nombre de prises réel</b></u>  : '+feature.properties.PRISE_RBAL+'<br><b><u>Statut avancement</b></u>  : '+feature.properties.STATUT+'<br><b><u>Début travaux</b></u>  : '+feature.properties.DEB_TRAV+'<br><b><u>Fin travaux</b></u>  : '+feature.properties.FIN_TRAV+'<br><b><u>Taux avancement travaux</b></u>  : '+feature.properties.AVANCEMENT+'<br><b><u>Taux complétude zone</b></u>  : '+feature.properties.COMPLETUDE+'<br><b><u>Infos pratiques</b></u>  : '+feature.properties.COMMENTAIR+'</p>'))
+			.addTo(map);
+	});
 	
-		map.on('mousemove', 'Déploiement NN', (e) => {
-			if (e.features.length > 0) {
-				if (hoveredStateId !== null) {
-					map.setFeatureState(
-						{ source: 'data_sro', id: hoveredStateId },
-						{ hover: false }
-					);
-				}
-				hoveredStateId = e.features[0].id;
-				map.setFeatureState(
-					{ source: 'data_sro', id: hoveredStateId },
-					{ hover: true }
-				);
-			}
-		});
-		
-		map.on('mouseenter', 'Déploiement NN', () => {
-			map.getCanvas().style.cursor = 'pointer';
-		});
-	 
-		map.on('mouseleave', 'Déploiement NN', () => {
-			map.getCanvas().style.cursor = '';
-			popupZasro.remove();
-			
+	map.on('mousemove', 'Déploiement NN', (e) => {
+		if (e.features.length > 0) {
 			if (hoveredStateId !== null) {
 				map.setFeatureState(
 					{ source: 'data_sro', id: hoveredStateId },
 					{ hover: false }
 				);
 			}
-			hoveredStateId = null;
-		});
+			hoveredStateId = e.features[0].id;
+			map.setFeatureState(
+				{ source: 'data_sro', id: hoveredStateId },
+				{ hover: true }
+			);
+		}
 	});
+	 
+	map.on('mouseleave', 'Déploiement NN', () => {
+		map.getCanvas().style.cursor = '';
+			
+		if (hoveredStateId !== null) {
+			map.setFeatureState(
+				{ source: 'data_sro', id: hoveredStateId },
+				{ hover: false }
+			);
+		}
+		hoveredStateId = null;
+	});
+	
 		
 	map.on('load', () => {
 	// Add a source for the state polygons.
