@@ -717,19 +717,9 @@ font-family: 'Tahoma';
 			}
 		});
 	
-		var popupZasro = new mapboxgl.Popup({
-			closeButton: false,
-			closeOnClick: false
-		});
 		
-		map.on('mouseenter', 'Déploiement NN', (e) => {
-			// Change the cursor style as a UI indicator.
-			map.getCanvas().style.cursor = 'pointer';
-			 
-			// Copy coordinates array.
-			var feature = e.features[0];
-			 
-			popupZasro 
+		map.on('click', 'Déploiement NN', (e) => {
+			new mapboxgl.Popup()
 				.setLngLat(e.lngLat)
 				.setHTML(('<p><b><u>Nom de la Zasro</b></u> : '+feature.properties.SRO_1+'<br><b><u>Nombre de prises réel</b></u>  : '+feature.properties.PRISE_RBAL+'<br><b><u>Statut avancement</b></u>  : '+feature.properties.STATUT+'<br><b><u>Début travaux</b></u>  : '+feature.properties.DEB_TRAV+'<br><b><u>Fin travaux</b></u>  : '+feature.properties.FIN_TRAV+'<br><b><u>Taux avancement travaux</b></u>  : '+feature.properties.AVANCEMENT+'<br><b><u>Taux complétude zone</b></u>  : '+feature.properties.COMPLETUDE+'<br><b><u>Infos pratiques</b></u>  : '+feature.properties.COMMENTAIR+'</p>'))
 				.addTo(map);
