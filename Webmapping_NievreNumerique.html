@@ -740,6 +740,10 @@ font-family: 'Tahoma';
 				);
 			}
 		});
+		
+		map.on('mouseenter', 'Déploiement NN', () => {
+			map.getCanvas().style.cursor = 'pointer';
+		});
 	 
 		map.on('mouseleave', 'Déploiement NN', () => {
 			map.getCanvas().style.cursor = '';
