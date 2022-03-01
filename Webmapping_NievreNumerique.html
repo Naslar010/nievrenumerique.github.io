@@ -650,7 +650,7 @@ font-family: 'Tahoma';
 	map.on('click', 'communes', (e) => {	 
 		new mapboxgl.Popup()
 			.setLngLat(e.lngLat)
-			.setHTML(('<p><b><u> Nom Commune</b></u> : '+e.features[0].properties.nom+'<br><b><u>Code INSEE</b></u> : '+e.features[0].properties.id+'<br><b><u>Nombre de prises IPE</b></u> : ' +e.features[0].properties.nb_prises+'</p>'))
+			.setHTML(('<p><b><u> Nom Commune</b></u> : '+e.features[0].properties.nom+'<br><b><u>Code INSEE</b></u> : '+e.features[0].properties.id+'<br><b><u>Nombre de prises RBAL</b></u> : ' +e.features[0].properties.nb_prises+'<br><b><u>Nombre de prises REX</b></u> : ' +e.features[0].properties.Prises_Rex+'<br><b><u>Communauté de Commune</b></u> : '+e.features[0].properties.EPCI+'</p>'))
 			.addTo(map);
 	});
 	
