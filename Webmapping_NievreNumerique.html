@@ -486,10 +486,20 @@ font-family: 'Tahoma';
 			'type': 'geojson',
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_amel1.geojson'
 		});	
-		// Add a GeoJSON source ipe_amel 1
+		// Add a GeoJSON source ipe_amel 2
 		map.addSource('ipe_amel2', {
 			'type': 'geojson',
 			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_amel2.geojson'
+		});
+		// Add a GeoJSON source ipe_amel 3
+		map.addSource('ipe_amel3', {
+			'type': 'geojson',
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_amel3.geojson'
+		});
+		// Add a GeoJSON source ipe_amel 4
+		map.addSource('ipe_amel4', {
+			'type': 'geojson',
+			'data': 'https://raw.githubusercontent.com/Naslar010/nievrenumerique.github.io/main/data/ipe_amel4.geojson'
 		});
 		map.addLayer({
 			"id": 'Prises amel1',
@@ -500,7 +510,7 @@ font-family: 'Tahoma';
 			'paint': {
 				'circle-color': {
 					'type': 'categorical',
-					'property': 'etatimmeuble',
+					'property': 'etatimmeub',
 					'stops': [
 					['DEPLOYE', '#56ea76'],
 					['CIBLE', '#e55e5e']
@@ -521,7 +531,49 @@ font-family: 'Tahoma';
 			'paint': {
 				'circle-color': {
 					'type': 'categorical',
-					'property': 'etatimmeuble',
+					'property': 'etatimmeub',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
+		});
+		
+		map.addLayer({
+			"id": 'Prises amel3',
+			"type": 'circle',
+			"source": 'ipe_amel3',
+			'layout': {"visibility": 'none',
+			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'etatimmeub',
+					'stops': [
+					['DEPLOYE', '#56ea76'],
+					['CIBLE', '#e55e5e']
+				]},
+				'circle-opacity': 0.7,
+				'circle-radius': 3.2,
+				'circle-stroke-width': 0.4,
+				'circle-stroke-color': '#e5f3ed'
+			}
+		});
+		
+		map.addLayer({
+			"id": 'Prises amel4',
+			"type": 'circle',
+			"source": 'ipe_amel4',
+			'layout': {"visibility": 'none',
+			},
+			'paint': {
+				'circle-color': {
+					'type': 'categorical',
+					'property': 'etatimmeub',
 					'stops': [
 					['DEPLOYE', '#56ea76'],
 					['CIBLE', '#e55e5e']
@@ -547,7 +599,7 @@ font-family: 'Tahoma';
 		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifiantimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemiseenservicecommercialeimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
 			.addTo(map);
 	});
 	
@@ -574,7 +626,7 @@ font-family: 'Tahoma';
 		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifiantimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemiseenservicecommercialeimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
 			.addTo(map);
 	});
 	
@@ -585,6 +637,60 @@ font-family: 'Tahoma';
 	// Change the cursor back to a pointer
 	// when it leaves the states layer.
 	map.on('mouseleave', 'Prises amel2', () => {
+		map.getCanvas().style.cursor = '';
+	});
+	
+	map.on('click', 'Prises amel3', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}		 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'Prises amel3', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change the cursor back to a pointer
+	// when it leaves the states layer.
+	map.on('mouseleave', 'Prises amel3', () => {
+		map.getCanvas().style.cursor = '';
+	});
+	
+	map.on('click', 'Prises amel4', (e) => {
+		// Copy coordinates array.
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var feature = e.features[0];
+		 
+		// Ensure that if the map is zoomed out such that multiple
+		// copies of the feature are visible, the popup appears
+		// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}		 
+		new mapboxgl.Popup()
+			.setLngLat(coordinates)
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
+			.addTo(map);
+	});
+	
+	map.on('mouseenter', 'Prises amel4', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change the cursor back to a pointer
+	// when it leaves the states layer.
+	map.on('mouseleave', 'Prises amel4, () => {
 		map.getCanvas().style.cursor = '';
 	});
 	
