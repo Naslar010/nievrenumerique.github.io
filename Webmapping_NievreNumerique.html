@@ -516,7 +516,7 @@ font-family: 'Tahoma';
 			'paint': {
 				'circle-color': {
 					'type': 'categorical',
-					'property': 'etatimmeub',
+					'property': 'etatimmeuble',
 					'stops': [
 					['DEPLOYE', '#56ea76'],
 					['CIBLE', '#e55e5e']
@@ -537,7 +537,7 @@ font-family: 'Tahoma';
 			'paint': {
 				'circle-color': {
 					'type': 'categorical',
-					'property': 'etatimmeub',
+					'property': 'etatimmeuble',
 					'stops': [
 					['DEPLOYE', '#56ea76'],
 					['CIBLE', '#e55e5e']
@@ -558,7 +558,7 @@ font-family: 'Tahoma';
 			'paint': {
 				'circle-color': {
 					'type': 'categorical',
-					'property': 'etatimmeub',
+					'property': 'etatimmeuble',
 					'stops': [
 					['DEPLOYE', '#56ea76'],
 					['CIBLE', '#e55e5e']
@@ -579,7 +579,7 @@ font-family: 'Tahoma';
 			'paint': {
 				'circle-color': {
 					'type': 'categorical',
-					'property': 'etatimmeub',
+					'property': 'etatimmeuble',
 					'stops': [
 					['DEPLOYE', '#56ea76'],
 					['CIBLE', '#e55e5e']
@@ -600,7 +600,7 @@ font-family: 'Tahoma';
 			'paint': {
 				'circle-color': {
 					'type': 'categorical',
-					'property': 'etatimmeub',
+					'property': 'etatimmeuble',
 					'stops': [
 					['DEPLOYE', '#56ea76'],
 					['CIBLE', '#e55e5e']
@@ -626,7 +626,7 @@ font-family: 'Tahoma';
 		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.codeadresseimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemiseenservicecommercialeimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
 			.addTo(map);
 	});
 	
@@ -653,7 +653,7 @@ font-family: 'Tahoma';
 		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.codeadresseimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemiseenservicecommercialeimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
 			.addTo(map);
 	});
 	
@@ -680,7 +680,7 @@ font-family: 'Tahoma';
 		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.codeadresseimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemiseenservicecommercialeimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
 			.addTo(map);
 	});
 	
@@ -707,7 +707,7 @@ font-family: 'Tahoma';
 		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.codeadresseimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemiseenservicecommercialeimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
 			.addTo(map);
 	});
 	
@@ -734,7 +734,7 @@ font-family: 'Tahoma';
 		}		 
 		new mapboxgl.Popup()
 			.setLngLat(coordinates)
-			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.identifian+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombreloge+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeub+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemise_1+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoie+' '+feature.properties.typevoieim+' '+feature.properties.nomvoieimm+', '+feature.properties.codepostal+' '+feature.properties.communeimm+'</p>'))
+			.setHTML(('<p><b><u> ID Immeuble</b></u> : '+feature.properties.codeadresseimmeuble+'<br><b><u>Nombre de logements</b></u> : '+feature.properties.nombrelogementsadresseipe+'<br><b><u>Etat du déploiement</b></u> : ' +feature.properties.etatimmeuble+'<br><b><u>Date mise en service commerciale</b></u> : ' +feature.properties.datemiseenservicecommercialeimmeuble+'<br><b><u>Adresse</b></u> : ' +feature.properties.numerovoieimmeuble+' '+feature.properties.typevoieimmeuble+' '+feature.properties.nomvoieimmeuble+', '+feature.properties.codepostalimmeuble+' '+feature.properties.communeimmeuble+'</p>'))
 			.addTo(map);
 	});
 	
